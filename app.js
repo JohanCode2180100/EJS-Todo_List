@@ -10,11 +10,21 @@ const tasks = [
   { title: "Faire les courses", done: true },
   { title: "bricoler", done: true },
 ];
-
+// add express encoded for req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.render("todoList", { tasks: tasks });
+});
+
+app.post("/task", (req, res) => {
+  tasks.push({
+    title: req.body.task,
+    done: false,
+  });
+  res.redirect("/");
 });
 
 app.listen(config.port, () => {
