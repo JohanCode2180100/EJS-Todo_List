@@ -17,15 +17,17 @@
 <h3>Taches</h3>
 
 <ul>
-<% tasks.forEach((task) => { %>
+<% tasks.forEach((task,index) => { %>
 <% if (task.done)  { %>
 
 <li>
+<strong><%=index%></strong>
 <s><%=task.title %></s> | <a href="#">supprimer</a>
 </li>
 <%} else { %>
 <li>
-<%= task.title %> | <a href="#">TERMINEE</a>
+<strong><%=index%></strong>
+<%= task.title %> | <a href="/task/<%=index%>/done">TERMINEE</a>
 </li><%}%>
 
 <%})%>

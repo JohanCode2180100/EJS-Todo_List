@@ -19,6 +19,11 @@ app.get("/", (req, res) => {
   res.render("todoList", { tasks: tasks });
 });
 
+app.get("/task/:id/done", (req, res) => {
+  tasks[req.params.id].done = true;
+  res.redirect("/");
+});
+
 app.post("/task", (req, res) => {
   tasks.push({
     title: req.body.task,
